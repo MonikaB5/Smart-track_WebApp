@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="mascot-container">
+        <div class="mascot">
+            <div class="face">
+                <div class="eye left-eye"></div>
+                <div class="eye right-eye"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Smart Tracker</h2>
+
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+
+    </div>
+
+    <div class="main">
+
+        <div class="welcome">
+            <marquee>
+                Welcome <span id="usernameDisplay"></span> — Track Your Devices Smartly 🚀
+            </marquee>
+        </div>
+
+        <!-- ADD DEVICE -->
+        <div class="add-device">
+            <input id="deviceName" placeholder="Device Name">
+            <input id="deviceId" placeholder="Device ID">
+            <input id="deviceLocation" placeholder="Location">
+
+            <button onclick="addDevice()">Add Device</button>
+        </div>
+        <button onclick="track('${d.location}')">
+            Track
+        </button>
+
+        <!-- STATS -->
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3 id="totalDevices">0</h3>
+                <p>Total Devices</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="activeDevices">0</h3>
+                <p>Active</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="offlineDevices">0</h3>
+                <p>Offline</p>
+            </div>
+
+        </div>
+
+        <h2>My Devices</h2>
+
+        <div id="devices" class="device-grid"></div>
+
+    </div>
+    <div class="status-card">
+        <h3>User Status</h3>
+
+        <div class="status-display">
+            <span id="status-indicator" class="offline"></span>
+            <span id="status-text">Offline</span>
+        </div>
+
+        <select id="status-select">
+            <option value="online">Online</option>
+            <option value="offline" selected>Offline</option>
+            <option value="busy">Busy</option>
+        </select>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

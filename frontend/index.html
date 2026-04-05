@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<div class="mascot-container">
+    <div class="mascot">
+        <div class="face">
+            <div class="eye left-eye"></div>
+            <div class="eye right-eye"></div>
+        </div>
+    </div>
+</div>
+
+
+<head>
+    <title>Smart Tracker Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <h2>Smart Tracker</h2>
+
+        <div class="tabs">
+            <button onclick="showLogin()">Login</button>
+            <button onclick="showSignup()">Sign up</button>
+        </div>
+
+        <div id="login">
+
+            <input id="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Password">
+
+            <button onclick="login()">Login</button>
+
+            <p>
+                Don't have account?
+                <span onclick="showSignup()">Sign up</span>
+            </p>
+
+        </div>
+
+        <div id="signup" style="display:none">
+
+            <input id="name" placeholder="Full Name">
+            <input id="semail" placeholder="Email">
+            <input id="spassword" type="password" placeholder="Password">
+
+            <button onclick="signup()">Create Account</button>
+
+            <p>
+                Already have account?
+                <span onclick="showLogin()">Login</span>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

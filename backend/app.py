@@ -1,14 +1,19 @@
+import os
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import sqlite3
 import random
 
-app = Flask(__name__, template_folder='../frontend', static_folder='../frontend', static_url_path='')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+DB_PATH = os.path.join(BASE_DIR, 'tracker.db')
+
+app = Flask(__name__, template_folder=FRONTEND_DIR, static_folder=FRONTEND_DIR, static_url_path='')
 CORS(app)
 
 # Database
 def init_db():
-    conn = sqlite3.connect('tracker.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     c.execute('''
@@ -57,7 +62,7 @@ def track():
 def signup():
     data = request.json
 
-    conn = sqlite3.connect('tracker.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     try:
@@ -74,7 +79,7 @@ def signup():
 def login():
     data = request.json
 
-    conn = sqlite3.connect('tracker.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     c.execute("SELECT * FROM users WHERE email=? AND password=?",
@@ -92,7 +97,7 @@ def send_otp():
     email = request.json['email']
     otp = str(random.randint(1000,9999))
 
-    conn = sqlite3.connect('tracker.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     c.execute("DELETE FROM otp WHERE email=?", (email,))
@@ -119,7 +124,7 @@ def add_device():
 def verify():
     data = request.json
 
-    conn = sqlite3.connect('tracker.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     c.execute("SELECT * FROM otp WHERE email=? AND code=?",
@@ -133,4 +138,5 @@ def verify():
 @app.route("/devices")
 def get_devices():
     return jsonify(devices)
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)

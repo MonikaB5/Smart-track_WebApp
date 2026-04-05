@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:5000";
+const API = "";
 
 // Fetch only devices added by this user
 function loadAlerts() {

@@ -1,16 +1,24 @@
-const API = "http://127.0.0.1:5000"
+const API = "";
 
 // ---------------- TAB SWITCH ----------------
 function showSignup() {
-    login.style.display = "none"
-    signup.style.display = "block"
-    signup.style.animation = "fadeUp 0.5s ease"
+    let login = document.getElementById("login-section");
+    let signup = document.getElementById("signup-section");
+    if(login && signup) {
+        login.style.display = "none"
+        signup.style.display = "block"
+        signup.style.animation = "fadeUp 0.5s ease"
+    }
 }
 
 function showLogin() {
-    signup.style.display = "none"
-    login.style.display = "block"
-    login.style.animation = "fadeUp 0.5s ease"
+    let login = document.getElementById("login-section");
+    let signup = document.getElementById("signup-section");
+    if(login && signup) {
+        signup.style.display = "none"
+        login.style.display = "block"
+        login.style.animation = "fadeUp 0.5s ease"
+    }
 }
 
 // ---------------- SIGNUP ----------------
@@ -38,6 +46,10 @@ function signup() {
                 alert("User already exists")
             }
         })
+        .catch(err => {
+            alert("Connection error: Is the backend server running?");
+            console.error(err);
+        });
 
 }
 
@@ -67,6 +79,10 @@ function login() {
                 alert("Invalid login")
             }
         })
+        .catch(err => {
+            alert("Connection error: Is the backend server running?");
+            console.error(err);
+        });
 
 }
 
@@ -137,12 +153,18 @@ Track
 
             })
 
-            document.getElementById("devices").innerHTML = html
-            document.getElementById("totalDevices").innerText = data.length
-            document.getElementById("activeDevices").innerText = active
-            document.getElementById("offlineDevices").innerText = offline
+            let devicesEl = document.getElementById("devices");
+            if (devicesEl) {
+                devicesEl.innerHTML = html;
+                document.getElementById("totalDevices").innerText = data.length;
+                document.getElementById("activeDevices").innerText = active;
+                document.getElementById("offlineDevices").innerText = offline;
+            }
 
         })
+        .catch(err => {
+            console.error("Failed to load devices", err);
+        });
 }
 // ---------------- TRACK ----------------
 function track(location) {
@@ -196,7 +218,7 @@ if (statusSelect) {
 
 // Load saved status
 const savedStatus = localStorage.getItem("userStatus");
-if (savedStatus) {
+if (savedStatus && statusSelect) {
     statusSelect.value = savedStatus;
     statusText.textContent =
         savedStatus.charAt(0).toUpperCase() + savedStatus.slice(1);

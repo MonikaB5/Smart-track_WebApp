@@ -1,15 +1,16 @@
-# Smart IoT Tracker WebApp
+# Smart Track Web App
 
-This is the Smart IoT Tracker WebApp!
+Live Demo:
+https://smart-track-webapp-9.onrender.com
 
-## Live Link Deployment
+Description:
+Smart Track is a web application used to monitor and manage user tracking and alerts. 
+It allows users to add devices, track activity, and receive alerts.
 
-You can deploy this application for free and get an always-on live link immediately by clicking the button below:
+Tech Stack:
+- Frontend: HTML, CSS, JavaScript
+- Backend: Flask
+- Deployment: Render
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/MonikaB5/Smart-track_WebApp)
-
-### How it works:
-1. Click the button above.
-2. Sign up or log into Render.
-3. Click "Create Blueprint" to deploy the Backend and Frontend together.
-4. Your application will be live in a few minutes!
+Author:
+Monika B
